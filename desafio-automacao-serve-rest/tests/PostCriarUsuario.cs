@@ -32,10 +32,10 @@ namespace desafio_automacao_serve_rest.tests
         public void NaoDeveCriarUmUsuarioComEmailJaUtilizado()
         {
             JObject jObjectBody = new JObject();
-            jObjectBody.Add("nome", "Tomas Oliver");
-            jObjectBody.Add("email", "tomas_oliver@gmail.com");
-            jObjectBody.Add("password", "123456");
-            jObjectBody.Add("administrador", "true");
+            jObjectBody.Add("nome", UsuarioProvider.Nome());
+            jObjectBody.Add("email", UsuarioProvider.Email());
+            jObjectBody.Add("password", UsuarioProvider.Password());
+            jObjectBody.Add("administrador", UsuarioProvider.Administrador());
 
             var json = ApiClient<User>.Request(Hooks.GetUsersEndpoint(), Method.POST, jObjectBody);
 

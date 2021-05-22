@@ -1,6 +1,4 @@
-﻿
-
-using desafio_automacao_serve_rest.client;
+﻿using desafio_automacao_serve_rest.client;
 using desafio_automacao_serve_rest.models;
 using desafio_automacao_serve_rest.utils.providers;
 using FluentAssertions;
@@ -13,12 +11,12 @@ namespace desafio_automacao_serve_rest.tests
         [Test]
         public void DeveBuscarUsuario()
         {
-            var json = ApiClient<User>.Request(Hooks.GetUsersEndpoint() + Hooks.GetId());
+            var json = ApiClient<User>.Request(Hooks.GetUsersEndpoint() + Hooks.GetUserId());
 
-            json.Nome.Should().Be("Tomas Oliver");
-            json.Email.Should().Be("tomas_oliver@gmail.com");
-            json.Password.Should().Be("123456");
-            json.Administrador.Should().Be("true");
+            json.Nome.Should().Be(UsuarioProvider.Nome());
+            json.Email.Should().Be(UsuarioProvider.Email());
+            json.Password.Should().Be(UsuarioProvider.Password());
+            json.Administrador.Should().Be(UsuarioProvider.Administrador());
             json.Id.Should().NotBeNull();
         }
 

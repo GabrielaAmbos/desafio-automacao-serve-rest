@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json.Linq;
+
 
 namespace desafio_automacao_serve_rest.utils.providers
 {
@@ -13,7 +12,7 @@ namespace desafio_automacao_serve_rest.utils.providers
 
         public static string Email()
         {
-            return "tomas_oliver@gmail.com";
+            return "tomasoliver@qatest.com";
         }
 
         public static string Password()
@@ -23,7 +22,29 @@ namespace desafio_automacao_serve_rest.utils.providers
 
         public static string Administrador()
         {
-            return "administrador";
+            return "true";
+        }
+
+        public static JObject CriarUsuario()
+        {
+            JObject jObjectBody = new JObject();
+
+            jObjectBody.Add("nome", Nome());
+            jObjectBody.Add("email", Email());
+            jObjectBody.Add("password", Password());
+            jObjectBody.Add("administrador", Administrador());
+
+            return jObjectBody;
+        }
+
+        public static JObject RealizarLogin()
+        {
+            JObject jObjectBody = new JObject();
+
+            jObjectBody.Add("email", Email());
+            jObjectBody.Add("password", Password());
+
+            return jObjectBody;
         }
     }
 }

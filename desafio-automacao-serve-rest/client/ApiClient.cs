@@ -10,7 +10,7 @@ namespace desafio_automacao_serve_rest.client
 {
     public static class ApiClient<T>
     {
-        public static T Request(string endpoint, Method method = Method.GET, JObject jObjectBody = null)
+        public static T Request(string endpoint, Method method = Method.GET, JObject jObjectBody = null, string token = null)
         {
             RestClient restClient = new RestClient(UrlProvider.BaseUrl());
             RestRequest restRequest = new RestRequest(endpoint, method);
@@ -23,11 +23,13 @@ namespace desafio_automacao_serve_rest.client
             {
                 restRequest.AddParameter("application/json", ParameterType.RequestBody);
             }
-          //  restRequest.AddHeader("Authorization", TokenProvider.BasicToken());
+
+            restRequest.AddHeader("Authorization", token);
 
             IRestResponse restResponse = restClient.Execute(restRequest);
 
             return JsonConvert.DeserializeObject<T>(restResponse.Content);
         }
+
     }
 }

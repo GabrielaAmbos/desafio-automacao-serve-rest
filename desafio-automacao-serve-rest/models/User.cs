@@ -4,6 +4,7 @@ namespace desafio_automacao_serve_rest.models
 {
     public class User
     {
+
         [JsonProperty("message")]
         public string Message { get; set; }
 

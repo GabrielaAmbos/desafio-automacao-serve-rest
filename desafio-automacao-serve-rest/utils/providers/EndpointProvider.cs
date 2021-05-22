@@ -8,5 +8,15 @@ namespace desafio_automacao_serve_rest.utils.providers
         {
             return UrlProvider.BaseUrl() + "/usuarios";
         }
+
+        public static string Products()
+        {
+            return UrlProvider.BaseUrl() + "/produtos";
+        }
+
+        public static string Login()
+        {
+            return UrlProvider.BaseUrl() + "/login";
+        }
     }
 }
